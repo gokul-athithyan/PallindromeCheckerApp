@@ -2,17 +2,18 @@ import java.util.*;
 public class PallindromeCheckerApp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Input text: ");
-        String text = sc.nextLine();
-        boolean isPalindrome = true;
-        int length = text.length();
-        for (int i = 0; i < length / 2; i++) {
-            if (text.charAt(i) != text.charAt(length - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+        String reversed = "";
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
         }
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+
+        if (input.equals(reversed)) {
+            System.out.println("The given string is a Palindrome");
+        } else {
+            System.out.println("The given string is NOT a Palindrome");
+        }
 
         sc.close();
 
