@@ -4,13 +4,26 @@ public class PallindromeCheckerApp {
         Scanner sc = new Scanner(System.in);
         System.out.print("Input: ");
         String input = sc.nextLine();
+
+        // Create Queue (FIFO)
+        Queue<Character> queue = new LinkedList<>();
+
+        // Create Stack (LIFO)
         Stack<Character> stack = new Stack<>();
+
+        // Insert each character into both queue and stack
         for (char c : input.toCharArray()) {
+            queue.add(c);
             stack.push(c);
         }
+
+        // Assume palindrome initially
         boolean isPalindrome = true;
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
+
+        // Compare until queue becomes empty
+        while (!queue.isEmpty()) {
+
+            if (queue.remove() != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
