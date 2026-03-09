@@ -1,38 +1,18 @@
 import java.util.*;
-
 public class PallindromeCheckerApp {
-    public static void main(String[] args) {
-
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-
-        // Ask user to enter input
-        System.out.print("Input : ");
+        System.out.print("Input: ");
         String input = sc.nextLine();
-
-        // Create LinkedList
-        LinkedList<Character> list = new LinkedList<>();
-
-        // Add characters to LinkedList
-        for (char c : input.toCharArray()) {
-            list.add(c);
-        }
-
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
         boolean isPalindrome = true;
+        for (int i = 0; i < normalized.length() / 2; i++) {
 
-        // Compare first and last characters
-        while (list.size() > 1) {
-            char first = list.removeFirst();
-            char last = list.removeLast();
-
-            if (first != last) {
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
             }
         }
-
-        // Print result
-        System.out.println("Is Palindrome? : " + isPalindrome);
-
-        sc.close();
+        System.out.println("Is Palindrome?: " + isPalindrome);
     }
 }
